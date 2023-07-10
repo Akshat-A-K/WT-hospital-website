@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+        input{
+            font:large; 
+            color:#16a085;
+            margin: 5px;
+            font-size: xx-large
+        }
+        label{
+            font:large;  
+            color:#16a085;
+        }
+        table, th, td {
+            border: 1px solid #16a085;
+        }
+        aside {
+            padding-left: 15px;
+            margin-left: 15px;
+            float: right;
+        }
+    </style>
+</head>
+<body style="margin-right:300px; margin-left:00px;font-size: xx-large;">
+        <div>
+        <header class="header">
+            <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> medcare. </a>
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="index.html">Services</a>
+                <a href="index.html">About</a>
+                <a href="index.html">Doctors</a>
+                <a href="index.html">Book</a>
+                <a href="index.html">Review</a>
+                <a href="index.html">Blogs</a>
+                <a href="login.html">Login</a>
+            </nav>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </header>
+        <aside style="margin-left: 190px;">
+                <img src="home-img.svg" alt="" style="margin-top: 200px;" width="500px" height="700px">
+        </aside>
+        <section class="home" id="home" style="margin-left: 30px; margin-right: 0px">
+            <div>
+                <h1 class="heading"> Registration <span>Form</span> </h1>
+            </div>
+            <legend>
+            <div class="form-div" >
+                <form action="">
+                <table>
+                <tr>
+                <td>
+                <label for="fname">First Name: </label>
+                </td>
+               <td>
+                <input type="text" id="fname" onchange="check()">
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <label for="sname">Second Name: </label>
+                </td>
+               <td>
+                <input type="text" id="sname" onchange="check()">
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <label for="password">Password: </label>
+                </td>
+               <td>
+                <input type="password" id="password" onchange="check()">
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <label for="dt">Birth Date:</label>
+                </td>
+               <td>
+                <input type="date" id="dt">
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <label for="mo_num">Mobile No: </label>
+                </td>
+               <td>
+                <input type="text " id="mo_num" onchange="check()">
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <label for="email">Email</label>
+                </td>
+               <td>
+                <input type="email" id="email" onchange="check()">
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <label for="gender">Select Gender:</label><br>
+                </td>
+               <td>
+                <input type="radio" id="male" class="g" name="gen">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" class="g" name="gen">
+                <label for="female">Female</label><br>
+                <input type="radio" id="other" class="g" name="gen"
+               checked>
+                <label for="other">Other</label><br>
+                </td>
+                </tr>
+                <tr>
+                <td colspan=50%>
+                <div class="btn-class">
+                <button class="btn" type="submit"
+               onclick="check()">Submit Form</button>
+                <button class="btn" type="reset">Reset</button>
+                </div>
+                </td>
+                </tr>
+                </table>
+                <p id="er">
+                </p>
+                </form>
+                
+                </div>
+            </div>
+            </legend>
+        </section>
+        </div>
+       </body>       
+<script>
+    function check() {
+        let f = document.getElementById("fname").value;
+        let l = document.getElementById("sname").value;
+        if (f == "") {
+            alert("First name should note be empty");
+            return;
+        }
+        for (let i = 0; i < f.length; i++) {
+            let c = f.charAt(i);
+            if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) continue;
+            alert("Only letters are allowed");
+            return;
+        }
+        if (l == "") {
+            alert("Last name should note be empty");
+            return;
+        }
+
+        for (let i = 0; i < l.length; i++) {
+            let c = l.charAt(i);
+            if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) continue;
+            alert("Only letters are allowed");
+            return;
+        }
+        let p = document.getElementById("password").value;
+        if (p.length < 8) {
+            alert("Password length should be grater than 8");
+            return;
+        }
+        let a = 0, b = 0, r = 0;
+        for (let i = 0; i < p.length; i++) {
+            let c = p.charAt(i);
+            if (c >= 'A' && c <= 'Z') a++;
+            else if (c >= 'a' && c <= 'z') b++;
+            else if (c >= '0' && c <= '9') c++;
+        }
+        if (a == 0 || b == 0 || c == 0) {
+            alert("Password should contain one uppercase, one lowercase and one digit");
+            return;
+        }
+        let e = document.getElementById("email").value;
+        if (e.length <= 16) {
+            alert("Please enter valid password");
+            return;
+        }
+        for (let i = 0; i < 2; i++) {
+            let c = e.charAt(i);
+            if (c >= '0' && c <= '9') continue;
+            else {
+                alert("Please enter valid password");
+                return;
+            }
+        }
+        for (let i = 2; i < 5; i++) {
+            let c = e.charAt(i);
+            if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) continue;
+            else {
+                alert("Please enter valid password");
+                return;
+            }
+        }
+        for (let i = 5; i < 8; i++) {
+            let c = e.charAt(i);
+            if (c >= '0' && c <= '9') continue;
+            else {
+                alert("Please enter valid password");
+                return;
+            }
+        }
+        if (e.includes("@nirmauni.ac.in") == false) {
+            alert("Please enter valid password");
+            return;
+        }
+    } 
+</script>
+
+</html>
